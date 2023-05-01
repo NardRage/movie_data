@@ -20,7 +20,7 @@
                     <div class="mb-4">
                         <i class="feather icon-unlock auth-icon"></i>
                     </div>
-                    <h3 class="mb-4">Login</h3>
+                    <h3 class="mb-4">登 录</h3>
                     {% if form.non_field_errors %}
                         {% for error in form.non_field_errors %}
                             <span class="text-danger d-block my-3">{{ error }}</span>
@@ -34,12 +34,12 @@
                     <div class="form-group text-left mt-4">
                         <div class="checkbox checkbox-fill d-inline">
                             <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
-                            <label for="checkbox-fill-a1" class="cr"> Save Details</label>
+                            <label for="checkbox-fill-a1" class="cr"> 保持登录</label>
                         </div>
                     </div>
-                    <button class="btn btn-primary shadow-2 mb-4">Login</button>
-                    <p class="mb-2 text-muted">Forgot password? <a href="{% url 'password_reset' %}">Reset</a></p>
-                    <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'register' %}">Signup</a></p>
+                    <button class="btn btn-primary shadow-2 mb-4">登 录</button>
+                    <p class="mb-2 text-muted">忘记密码? <a href="{% url 'password_reset' %}">重置</a></p>
+                    <p class="mb-0 text-muted">还没有账户? <a href="{% url 'register' %}">注册</a></p>
                 </form>
             </div>
         </div>

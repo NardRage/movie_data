@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>实体对齐</title>
+	<meta charset="utf-8">
+	<style>
+		#container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.entity {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 0 20px;
+		}
+
+		.attribute {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 5px 0;
+		}
+
+		.attribute input {
+			margin-bottom: 5px;
+		}
+
+		.attribute label {
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		.button {
+			margin: 20px 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="entity1" class="entity">
+			<h2>实体1</h2>
+			<div class="attribute">
+				<label for="attr1-1">属性1-1</label>
+				<input id="attr1-1" type="text">
+				<label for="attr1-2">属性1-2</label>
+				<input id="attr1-2" type="text">
+			</div>
+			<button id="up1">上移</button>
+			<button id="down1">下移</button>
+		</div>
+		<div id="entity2" class="entity">
+			<h2>实体2</h2>
+			<div class="attribute">
+				<label for="attr2-1">属性2-1</label>
+				<input id="attr2-1" type="text">
+				<label for="attr2-2">属性2-2</label>
+				<input id="attr2-2" type="text">
+			</div>
+			<button id="up2">上移</button>
+			<button id="down2">下移</button>
+		</div>
+	</div>
+	<div class="button">
+		<button id="align">对齐</button>
+	</div>
+	<script type="text/javascript">
+  $(document).ready(function() {
+    // 获取实体信息
+    var entity1 = document.getElementById("entity1");
+    var entity2 = document.getElementById("entity2");
+    var entity1_title = document.getElementById("entity1_title");
+    var entity2_title = document.getElementById("entity2_title");
+
+    // 获取属性信息
+    var entity1_attrs = document.getElementById("entity1_attrs");
+    var entity2_attrs = document.getElementById("entity2_attrs");
+
+    // 获取调节按钮
+    var up_btn = document.getElementById("up_btn");
+    var down_btn = document.getElementById("down_btn");
+
+    // 定义实体属性初始高度
+    var entity_attr_height = 150;
+
+    // 点击上调按钮，上调实体属性高度
+    up_btn.onclick = function() {
+      entity_attr_height += 20;
+      entity1_attrs.style.height = entity_attr_height + "px";
+      entity2_attrs.style.height = entity_attr_height + "px";
+    };
+
+    // 点击下调按钮，下调实体属性高度
+    down_btn.onclick = function() {
+      entity_attr_height -= 20;
+      entity1_attrs.style.height = entity_attr_height + "px";
+      entity2_attrs.style.height = entity_attr_height + "px";
+    };
+
+    // 根据实体名称调整标题
+    entity1_title.innerHTML = entity1.innerHTML;
+    entity2_title.innerHTML = entity2.innerHTML;
+
+    // 移除实体原始显示
+    entity1.innerHTML = "";
+    entity2.innerHTML = "";
+  });
+</script>

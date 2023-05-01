@@ -28,8 +28,8 @@ if not SECRET_KEY:
     SECRET_KEY = ''.join(random.choice( string.ascii_lowercase  ) for i in range( 32 ))
 
 # Render Deployment Code
-DEBUG = 'RENDER' not in os.environ
-
+# DEBUG = 'RENDER' not in os.environ
+DEBUG =True
 # HOSTs List
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
@@ -91,31 +91,55 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DB_ENGINE   = os.getenv('DB_ENGINE'   , None)
-DB_USERNAME = os.getenv('DB_USERNAME' , None)
-DB_PASS     = os.getenv('DB_PASS'     , None)
-DB_HOST     = os.getenv('DB_HOST'     , None)
-DB_PORT     = os.getenv('DB_PORT'     , None)
-DB_NAME     = os.getenv('DB_NAME'     , None)
+# DB_ENGINE   = os.getenv('DB_ENGINE'   , None)
+# DB_USERNAME = os.getenv('DB_USERNAME' , None)
+# DB_PASS     = os.getenv('DB_PASS'     , None)
+# DB_HOST     = os.getenv('DB_HOST'     , None)
+# DB_PORT     = os.getenv('DB_PORT'     , None)
+# DB_NAME     = os.getenv('DB_NAME'     , None)
+#
+# if DB_ENGINE and DB_NAME and DB_USERNAME:
+#     DATABASES = {
+#       'default': {
+#         'ENGINE'  : 'django.db.backends.' + DB_ENGINE,
+#         'NAME'    : DB_NAME,
+#         'USER'    : DB_USERNAME,
+#         'PASSWORD': DB_PASS,
+#         'HOST'    : DB_HOST,
+#         'PORT'    : DB_PORT,
+#         },
+#     }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.mysql',  # 默认
+#             'NAME': 'Movie_data',
+#             'HOST': '192.168.121.206',
+#             'PORT': '3306',
+#             'USER': 'root',
+#             'PASSWORD': '202214829Dj!',
+#             # 'OPTION': {
+#             #     "init_command": "SET foreign_key_checks = 0;",
+#             # }
+#         }
+#     }
 
-if DB_ENGINE and DB_NAME and DB_USERNAME:
-    DATABASES = { 
-      'default': {
-        'ENGINE'  : 'django.db.backends.' + DB_ENGINE, 
-        'NAME'    : DB_NAME,
-        'USER'    : DB_USERNAME,
-        'PASSWORD': DB_PASS,
-        'HOST'    : DB_HOST,
-        'PORT'    : DB_PORT,
-        }, 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # 默认
+        'NAME': 'Movie_data',
+        'HOST': '42.192.89.66',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': '202214829dj!',
+        # 'OPTION': {
+        #     "init_command": "SET foreign_key_checks = 0;",
+        # }
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
-        }
-    }
+}
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -139,13 +163,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
+
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

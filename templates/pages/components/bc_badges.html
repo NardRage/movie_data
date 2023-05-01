@@ -3,44 +3,152 @@
 
 {% block content %}
 
-  <!-- [ Main Content ] start -->
-  <div class="row">
-    <!-- [ badge ] start -->
-    <div class="col-sm-12">
-      <div class="card">
-        <div class="card-header">
-          <h5>Basic Badges</h5>
+    <!-- [ Main Content ] start -->
+    <div class="row">
+        <!-- [ badge ] start -->
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>实体对齐</h5>
+                </div>
+                <div class="card-body">
+                    <h2>实体对齐</h2>
+                    <div class="table-responsive ">
+                        <table class="table tble-striped">
+                            <thead>
+                            <tr>
+                                <th>左实体</th>
+                                <th>影视实体</th>
+                                <th>影人实体</th>
+                                <th>机构实体</th>
+                                <th>type</th>
+
+                                <th>右实体</th>
+                                <th>影视实体</th>
+                                <th>影人实体</th>
+                                <th>机构实体</th>
+                                <th>type</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>=
+                            <tr>
+                                <th scope="row"><a href=""
+                                                   class="badge badge-info">id:239</a>
+                                </th>
+                                <td>阿甘正传</td>
+                                <td>华纳</td>
+                                <td>罗伯特·泽米吉斯 Robert</td>
+                                <td>剧情 励志<span></span></td>
+
+                                <th scope="row"><a href=""
+                                                   class="badge badge-info">id:251</a>
+                                <td>情书</td>
+                                <td>岩井俊二 Shunji</td>
+                                <td>万达影视传媒有限公司</td>
+                                <td>剧情 爱情</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row"><a href=""
+                                                   class="badge badge-info">id:136</a>
+                                </th>
+                                <td>死亡诗社</td>
+                                <td>华纳</td>
+                                <td scope="row"><a class="badge badge-success"></a>彼得·威尔 Peter</td>
+
+                                <td>剧情 <span></span></td>
+
+                                <th scope="row"><a href=""
+                                                   class="badge badge-info">id:192</a>
+                                </th>
+                                <td>教父2</td>
+                                <th scope="row"><a class="badge badge-success"></a>弗朗西斯·福特·科波拉 Francis</th>
+                                <td>乐华娱乐</td>
+                                <td>剧情 犯罪</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                        <div id="container">
+		<div id="entity1" class="entity">
+			<h6>实体左</h6>
+			<div class="attribute">
+				<label for="attr1-1">属性1-1</label>
+				<input id="attr1-1" type="text">
+				<label for="attr1-2">属性1-2</label>
+				<input id="attr1-2" type="text">
+			</div>
+			<button id="up1">上移</button>
+			<button id="down1">下移</button>
+		</div>
+		<div id="entity2" class="entity">
+			<h6>实体右</h6>
+			<div class="attribute">
+				<label for="attr2-1">属性2-1</label>
+				<input id="attr2-1" type="text">
+				<label for="attr2-2">属性2-2</label>
+				<input id="attr2-2" type="text">
+			</div>
+			<button id="up2">上移</button>
+			<button id="down2">下移</button>
+		</div>
+	</div>
+	<div class="button">
+		<button id="align">对齐</button>
+	</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="card-body">
-          <h1>Example heading <span class="badge badge-secondary">New</span></h1>
-          <h2>Example heading <span class="badge badge-secondary">New</span></h2>
-          <h3>Example heading <span class="badge badge-secondary">New</span></h3>
-          <h4>Example heading <span class="badge badge-secondary">New</span></h4>
-          <h5>Example heading <span class="badge badge-secondary">New</span></h5>
-          <h6>Example heading <span class="badge badge-secondary">New</span></h6>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5>Button Badges</h5>
-        </div>
-        <div class="card-body">
-          <button type="button" class="btn btn-primary">primary <span
-              class="badge badge-light">4</span></button>
-          <button type="button" class="btn btn-secondary">secondary <span
-              class="badge badge-light">4</span></button>
-          <button type="button" class="btn btn-success">success <span
-              class="badge badge-light">4</span></button>
-          <button type="button" class="btn btn-danger">danger <span
-              class="badge badge-light">4</span></button>
-          <button type="button" class="btn btn-warning">warning <span
-              class="badge badge-light">4</span></button>
-          <button type="button" class="btn btn-info">info <span class="badge badge-light">4</span></button>
-        </div>
-      </div>
+        <!-- [ badge ] end -->
     </div>
-    <!-- [ badge ] end -->
-  </div>
-  <!-- [ Main Content ] end -->
+    <!-- [ Main Content ] end -->
 
 {% endblock content %}
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // 获取实体信息
+    var entity1 = document.getElementById("entity1");
+    var entity2 = document.getElementById("entity2");
+    var entity1_title = document.getElementById("entity1_title");
+    var entity2_title = document.getElementById("entity2_title");
+
+    // 获取属性信息
+    var entity1_attrs = document.getElementById("entity1_attrs");
+    var entity2_attrs = document.getElementById("entity2_attrs");
+
+    // 获取调节按钮
+    var up_btn = document.getElementById("up_btn");
+    var down_btn = document.getElementById("down_btn");
+
+    // 定义实体属性初始高度
+    var entity_attr_height = 150;
+
+    // 点击上调按钮，上调实体属性高度
+    up_btn.onclick = function() {
+      entity_attr_height += 20;
+      entity1_attrs.style.height = entity_attr_height + "px";
+      entity2_attrs.style.height = entity_attr_height + "px";
+    };
+
+    // 点击下调按钮，下调实体属性高度
+    down_btn.onclick = function() {
+      entity_attr_height -= 20;
+      entity1_attrs.style.height = entity_attr_height + "px";
+      entity2_attrs.style.height = entity_attr_height + "px";
+    };
+
+    // 根据实体名称调整标题
+    entity1_title.innerHTML = entity1.innerHTML;
+    entity2_title.innerHTML = entity2.innerHTML;
+
+    // 移除实体原始显示
+    entity1.innerHTML = "";
+    entity2.innerHTML = "";
+  });
+</script>
